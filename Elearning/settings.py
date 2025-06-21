@@ -12,7 +12,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # Set this to your Render custom domain or .onrender.com URL
-ALLOWED_HOSTS = ['your-render-url.onrender.com']
+ALLOWED_HOSTS = ['e-learning-5uto.onrender.com']
+
 
 # Application definition
 INSTALLED_APPS = [
