@@ -107,6 +107,8 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# Razorpay API keys
-KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
-KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET")
+
+
+# razor pay keys
+KEY_ID = os.environ.get('KEY_ID')
+KEY_SECRET = os.environ.get('KEY_SECRET')
