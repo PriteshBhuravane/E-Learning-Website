@@ -1,0 +1,52 @@
+{% block title %}Bill Reciept {% endblock %}
+{% load static %}
+{% block content %}
+{% load course_tags %}
+
+<!-- invoice.html -->
+
+<html>
+<head>
+  <title>Invoice #{{ payment.id }}</title>
+</head>
+
+<body>
+
+<div id="invoice-container">
+
+  <h1>Invoice #{{ payment.id }}</h1>
+
+  <p>
+    Date: {{ payment.date|date:"SHORT_DATE_FORMAT" }}
+  </p>
+
+  <p>
+    Bill To: <br>
+    {{ payment.user.get_full_name }}<br>
+    {{ payment.user.email }}
+  </p>
+
+  <table id="invoice-items">
+    <tr>
+      <th>Course</th>
+      <th>Price</th>
+    </tr>
+    {% for item in payment.items.all %}
+    <tr>
+      <td>{{ item.course.title }}</td>
+      <td>${{ item.course.price }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="2">Total: ${{ payment.amount }}</td>
+    </tr>
+  </table>
+
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock %}

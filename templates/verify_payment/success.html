@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}successful payment {% endblock %}
+{% load static %}
+{% block content %}
+{% load course_tags %}
+<style>
+
+  @media print {
+    .btn{
+      display: none !important;
+    }
+  }
+
+</style>
+<style>
+  @media print {
+    header, footer {
+      display: none;
+    }
+  }
+</style>
+
+
+<div class="container py-8 py-11">
+  <div class="row">
+    <div class="col-xl-8 mx-auto">
+      <i class="fa-solid fa-circle-check text-center" style="font-size:100px;color:green;margin-left:42%" ></i>
+      <header class="entry-header mt-4">
+        <h1 class="entry-title text-center">Order received</h1>
+        <p class="text-center">Thank you. Your order has been received.</p>
+      </header>
+      <div class="row border border-info p-4">
+        <div class="col-lg-3">
+          Order ID: <br>
+          <strong style="word-wrap: break-word;">{{payment.order_id}}</strong>
+        </div>
+        <div class="col-lg-3">
+          Date:<br>
+          <strong>{{payment.date}}</strong>
+        </div>
+        <div class="col-lg-3">
+          Total:<br>
+          <strong>₹{{payment.course.price}}</strong>
+        </div>
+        <div class="col-lg-3">
+          Payment method: <br>
+          <strong>Check payments</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row p-4 border border-dark">
+    <header class="entry-header mt-4">
+      <h2 class="entry-title text-left">Order Details</h2><br>
+    </header>
+    <div class="row p-2">
+      <div class="col-lg-8">
+        <strong style="word-wrap: break-word; margin-left:2%" >Product</strong>
+      </div>
+      <div class="col-lg-3" style="margin-left:1%">
+        <strong>Total</strong>
+      </div>
+      <div>
+        <hr style="border-top:  3px solid #000000; ">
+      </div>
+    </div>
+    <div class="row p-2">
+      <div class="col-lg-8" style="margin-left:1%">
+        {{payment.course.title}}
+      </div>
+      <div class="col-lg-3" >
+        ₹{{payment.course.price}}
+      </div><br>
+      <div class="col-lg-8" style="margin-top:9px;margin-left:1% ">
+        Discount
+      </div>
+      <div class="col-lg-3" style="margin-top:9px">
+        {{payment.course.discount}}%
+      </div>
+      <div>
+        <hr style="border-top:  3px solid #000000; ">
+      </div>
+    </div>
+    <div class="row p-2">
+      <div class="col-lg-8" style="margin-left:1%">
+        <strong>Subtotal</strong>
+      </div>
+      <div class="col-lg-3" style="margin-top:9px" >
+        ₹ {% discount_calculation payment.course.price payment.course.discount %}
+      </div><br>
+      <div class="col-lg-8" style="margin-top:9px;margin-left:1% ">
+        <strong>Payment Method:</strong>
+      </div>
+      <div class="col-lg-3" style="margin-top:9px">
+        Online Payment
+      </div>
+      <div class="col-lg-8" style="margin-top:9px;margin-left:1% ">
+        <strong>total</strong>
+      </div>
+      <div class="col-lg-3" style="margin-top:9px" >
+        ₹{{payment.course.price}}
+      </div>
+    </div>
+    <br>
+    <!-- Add the Download button here -->
+
+  </div>
+    <div class="text-left">
+      <br>
+      <button class="btn btn-primary" id="printbtn">Download</button>
+    </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const printbtn = document.getElementById("printbtn");
+    printbtn.addEventListener("click", () => {
+      printbtn.disabled = true;
+      window.print();
+      setTimeout(() => {
+        printbtn.disabled = false;
+      }, 1000);
+    });
+  });
+</script>
+{% endblock %}
+
+
