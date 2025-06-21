@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-aow-5n3@e^wi4)wff%4zuwurfa8w3etb=$y6nvmteh-*we1csp'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,5 +139,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 # razor pay keys
-KEY_ID = os.environ.get('KEY_ID')
-KEY_SECRET = os.environ.get('KEY_SECRET')
+KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
+KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET")
