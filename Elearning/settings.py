@@ -132,11 +132,12 @@ LOGOUT_REDIRECT_URL = 'login'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'bhuravanepritesh@gmail.com'
-EMAIL_HOST_PASSWORD = 'ubphaqeuxmeumpgx'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
-KEY_ID = "rzp_test_wlc99hIMn307RW"
-KEY_SECRET = "jkIIkQ9ikZs2pGe5TgNETQaL"
+# razor pay keys
+KEY_ID = os.environ.get('KEY_ID')
+KEY_SECRET = os.environ.get('KEY_SECRET')
