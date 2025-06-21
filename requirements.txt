@@ -13,5 +13,5 @@ setuptools==80.9.0
 sqlparse==0.5.3
 typing_extensions==4.14.0
 urllib3==2.5.0
-gunicorn
-
+gunicorn==23.0.0
+whitenoise==6.6.0
